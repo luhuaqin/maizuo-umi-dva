@@ -19,7 +19,8 @@ function nowplaying(props: any) {
   }, [])
   return (
     <div style={{ marginTop: '20px' }}>
-      <ul>
+      <ol>
+        {console.log(list)}
         {
           list.map((item:any) => {
             return (
@@ -27,7 +28,7 @@ function nowplaying(props: any) {
             )
           })
         }
-      </ul>
+      </ol>
     </div>
   )
 }

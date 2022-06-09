@@ -3,9 +3,11 @@ import { NavBar, Space, DotLoading } from 'antd-mobile'
 import { SearchOutline, DownOutline } from 'antd-mobile-icons'
 import { useHistory } from 'umi'
 import { connect } from 'dva'
+import CinemaListContainer from './cinemaComponent/cinemaListContainer'
+import '@/layouts/index.less'
 
 
-function Cinema(props: any) {
+function cinema(props: any) {
   const history = useHistory()
 
   useEffect(()=> {
@@ -17,7 +19,9 @@ function Cinema(props: any) {
         }
       })
     }else {
-      console.log('缓存');
+      // props.dispatch({
+      //   type: 'cinema/getCinemaOldList'
+      // })
     }
   },[])
 
@@ -37,9 +41,23 @@ function Cinema(props: any) {
     </div>
   )
 
+  const right = (
+    <div style={{ fontSize: 17 }} onClick={() => {
+      history.push('/cinemasearch')
+    }}>
+      <Space style={{ '--gap': '5px' }}>
+        <SearchOutline />
+      </Space>
+    </div>
+  )
+
   return (
-    <div>
-      <NavBar style={{ fontSize: 24 }} backArrow={false} left={left} right={<SearchOutline />}>
+    <div style={{ padding: '10px 10px' }}>
+      <NavBar
+        style={{ fontSize: 24 }}
+        backArrow={false}
+        left={left}
+        right={right}>
         标题
       </NavBar>
       {
@@ -47,8 +65,8 @@ function Cinema(props: any) {
       }
       <ol>
         {
-          props.cinemaList.length && props.cinemaList.map((item: any) => {
-            return <li key={item.cinemaId}>{item.name}</li>
+          props.cinemaList && props.cinemaList.map((item: any) => {
+            return <CinemaListContainer cinemaList={props.cinemaList} key={item.cinemaId} />
           })
         }
       </ol>
@@ -57,11 +75,10 @@ function Cinema(props: any) {
 }
 
 export default connect((state: any)=> {
-  console.log(state)
   return {
     cityName: state.city.cityName,
     cityId: state.city.cityId,
     cinemaList: state.cinema.cinemaList,
     loading: state.loading.global
   }
-})(Cinema)
+})(cinema)

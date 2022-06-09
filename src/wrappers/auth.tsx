@@ -5,7 +5,6 @@ export default function auth(props:any) {
   if(localStorage.getItem('token')) {
     return (
       <div>
-        auth
         {props.children}
       </div>
     )

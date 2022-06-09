@@ -20,7 +20,7 @@ function comingsoon(props: any) {
 
   return (
     <div style={{ marginTop: '20px' }}>
-      <ul>
+      <ol>
         {
           list.map((item:any) => {
             return (
@@ -28,7 +28,7 @@ function comingsoon(props: any) {
             )
           })
         }
-      </ul>
+      </ol>
     </div>
   )
 }

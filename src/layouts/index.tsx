@@ -3,7 +3,16 @@ import { NavLink } from 'umi'
 import style from './index.less'
 
 export default function index(props:any) {
-  if(props.location.pathname === '/city') {
+  if( props.location.pathname === '/city' ||
+      props.location.pathname === '/cinemasearch' ||
+      props.location.pathname === '/saleseatticket' ||
+      props.location.pathname === '/redpacket' ||
+      props.location.pathname === '/balance' ||
+      props.location.pathname === '/help' ||
+      props.location.pathname === '/setting' ||
+      props.location.pathname === '/filmorder' ||
+      props.location.pathname === '/productorder' ||
+      props.location.pathname === '/login') {
     return <div>{props.children}</div>
   }else if(props.location.pathname?.includes('/detail')) {
     return (
