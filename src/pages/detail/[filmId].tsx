@@ -23,27 +23,29 @@ function Detail(props: any) {
       setDetailObj(res.data.data.film)
     })
   },[filmId])
-  console.log(detailObj);
-  // const { poster, name, premiereAt, grade, category, nation, runtime, synopsis } = detailObj
   return (
     <div>
-      {/* <Image src={poster} />
-      <div style={{lineHeight: '25px', margin: '10px 15px', color: 'gray'}}>
-        <p style={{fontSize: '20px', color: 'black'}}>
-          {name}
-          <span style={{ display: 'inline-block', backgroundColor: '#D2D6DC', color: 'white', borderRadius: '2px', fontSize: '12px', width: '20px', textAlign: 'center' }}>{}</span>
-          <i><span color='orange'>{grade}分</span></i>
-        </p>
-        <p>{category}</p>
-        <p>{premiereAt}上映</p>
-        <p>
-          <span>{nation}</span> |
-          <span>{runtime}分钟</span>
-        </p>
-        <p style={{marginTop: '10px'}}>
-          {synopsis}
-        </p>
-      </div> */}
+      {
+        detailObj && <div>
+          <Image src={detailObj.poster} />
+            <div style={{lineHeight: '25px', margin: '10px 15px', color: 'gray'}}>
+              <p style={{fontSize: '20px', color: 'black'}}>
+                {detailObj.name}
+                <span style={{ display: 'inline-block', backgroundColor: '#D2D6DC', color: 'white', borderRadius: '2px', fontSize: '12px', width: '20px', textAlign: 'center' }}>{}</span>
+                <i><span color='orange'>{detailObj.grade}分</span></i>
+              </p>
+              <p>{detailObj.category}</p>
+              <p>{detailObj.premiereAt}上映</p>
+              <p>
+                <span>{detailObj.nation}</span> |
+                <span>{detailObj.runtime}分钟</span>
+              </p>
+              <p style={{marginTop: '10px'}}>
+                {detailObj.synopsis}
+              </p>
+            </div>
+        </div>
+      }
     </div>
   )
 }
