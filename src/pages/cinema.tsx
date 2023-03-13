@@ -31,7 +31,6 @@ function cinema(props: any) {
       props.dispatch({
         type: 'cinema/clearList'
       })
-
       history.push('/city')
     }}>
       <Space style={{ '--gap': '5px' }}>
